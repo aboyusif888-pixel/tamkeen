@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>مكتبة جمعية تمكين الأسرة بالقصيم</title>
+<meta property="og:title" content="مكتبة جمعية تمكين الأسرة بالقصيم"/>
+<meta property="og:description" content="تصفح كتب المكتبة وقدّم طلب إعارة — مرخصة برقم ٢١٥٩"/>
+<meta property="og:image" content="https://i.ibb.co/354bxcQT/Screenshot.png"/>
+<meta property="og:type" content="website"/>
+<meta name="theme-color" content="#2ab4c0"/>
+<meta name="google-site-verification" content="qg0dKyHq7u4-SaynPiCxToGWI59rUJcNPKoKebYwtQA"/>
+<meta name="description" content="مكتبة جمعية تمكين الأسرة بالقصيم — تصفح الكتب المتاحة وقدّم طلب إعارة مجاناً. مرخصة برقم ٢١٥٩. خدمات الإعارة المنزلية، مكتبة الأطفال، ورش ثقافية وتوعوية في بريدة."/>
+<meta name="keywords" content="مكتبة تمكين, جمعية تمكين الأسرة, مكتبة بريدة, مكتبة القصيم, إعارة كتب, كتب أطفال, تنمية أسرية, ورش ثقافية"/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, getDocs, updateDoc, deleteDoc, doc, query, orderBy }
+    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+  
+
+  // 🔴 ضع إعدادات Firebase الخاصة بك هنا بعد إنشاء المشروع
+  const firebaseConfig = {
+    apiKey: "AIzaSyDMy3gNzbp0C5tnNteAgjQ-_Dai5jjBIsY",
+    authDomain: "kabku-c1ccd.firebaseapp.com",
+    projectId: "kabku-c1ccd",
+    storageBucket: "kabku-c1ccd.firebasestorage.app",
+    messagingSenderId: "276025552243",
+    appId: "1:276025552243:web:7ed2e7b777d541d70ca906",
+    measurementId: "G-Z9KG3R219Q"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  window._db = getFirestore(app);
+  
+  window._firebase = { collection, addDoc, getDocs, updateDoc, deleteDoc, doc, query, orderBy };
+  document.dispatchEvent(new Event('firebaseReady'));
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#2ab4c0;--teal-dark:#1a8a94;--teal-light:#5ecdd6;--teal-pale:#e0f7fa;
+  --gold:#c9a84c;--gold-light:#e8c97a;
+  --ink:#0d2e30;--cream:#f8fcfd;--surface:#fff;--muted:#5a8a8e;--border:rgba(42,180,192,0.15);
+}
+html{scroll-behavior:smooth;overflow-x:hidden;width:100%}
+body{font-family:'Cairo',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;width:100%;max-width:100vw}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0.6rem 5vw;background:rgba(248,252,253,0.96);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);transition:box-shadow 0.3s}
+nav.scrolled{box-shadow:0 4px 24px rgba(42,180,192,0.12)}
+.logo-img{height:50px;width:auto}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:0.88rem;font-weight:600;transition:color 0.2s;cursor:pointer;background:none;border:none;font-family:'Cairo',sans-serif;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;right:0;width:0;height:2px;background:var(--teal);transition:width 0.3s;border-radius:2px}
+.nav-links a:hover{color:var(--ink)}.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--teal)!important;color:#fff!important;padding:0.46rem 1.3rem;border-radius:50px}
+.nav-cta::after{display:none!important}.nav-cta:hover{background:var(--teal-dark)!important}
+.hero{min-height:100vh;display:flex;align-items:center;padding:7rem 5vw 4rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 15% 50%,rgba(42,180,192,0.08),transparent 70%),radial-gradient(ellipse 40% 50% at 85% 20%,rgba(201,168,76,0.06),transparent 60%)}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:var(--teal-pale);border:1px solid rgba(42,180,192,0.2);padding:0.36rem 1rem;border-radius:50px;font-size:0.74rem;color:var(--teal-dark);font-weight:700;margin-bottom:1.3rem;opacity:0;animation:fadeUp 0.8s 0.1s forwards;flex-wrap:wrap;text-align:center;justify-content:center;max-width:100%;line-height:1.6}
+.hero-badge::before{content:'●';font-size:0.4rem;color:var(--teal)}
+.hero h1{font-size:clamp(2rem,4vw,3.3rem);font-weight:900;line-height:1.18;margin-bottom:1.3rem;opacity:0;animation:fadeUp 0.8s 0.25s forwards}
+.hero h1 em{font-style:normal;color:var(--teal);position:relative}
+.hero h1 em::after{content:'';position:absolute;bottom:3px;right:0;left:0;height:3px;background:var(--gold-light);border-radius:2px;opacity:0.5}
+.hero p{font-size:0.97rem;color:var(--muted);line-height:1.85;margin-bottom:2rem;font-family:'Tajawal',sans-serif;max-width:450px;opacity:0;animation:fadeUp 0.8s 0.4s forwards}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp 0.8s 0.55s forwards}
+.btn-primary{background:var(--teal);color:#fff;padding:0.8rem 1.8rem;border-radius:50px;text-decoration:none;font-weight:700;font-size:0.92rem;transition:all 0.2s;display:inline-flex;align-items:center;gap:0.4rem;cursor:pointer;border:none;font-family:'Cairo',sans-serif}
+.btn-primary:hover{background:var(--teal-dark);transform:translateY(-2px);box-shadow:0 8px 20px rgba(42,180,192,0.28)}
+.btn-secondary{border:1.5px solid rgba(42,180,192,0.3);color:var(--teal-dark);padding:0.8rem 1.8rem;border-radius:50px;text-decoration:none;font-weight:600;font-size:0.92rem;transition:all 0.2s;cursor:pointer;background:transparent;font-family:'Cairo',sans-serif}
+.btn-secondary:hover{border-color:var(--teal);background:var(--teal-pale)}
+.hero-visual{opacity:0;animation:fadeIn 1s 0.5s forwards;position:relative}
+.hero-card{background:var(--surface);border-radius:22px;padding:2.2rem;box-shadow:0 20px 60px rgba(42,180,192,0.1),0 0 0 1px rgba(42,180,192,0.06);position:relative;overflow:hidden}
+.hero-card::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:radial-gradient(circle,rgba(201,168,76,0.11),transparent 70%)}
+.card-stat{display:flex;flex-direction:column;margin-bottom:1.8rem}
+.card-stat-num{font-size:2.6rem;font-weight:900;color:var(--teal-dark);line-height:1}
+.card-stat-num span{color:var(--gold);font-size:1.2rem}
+.card-stat-label{font-size:0.83rem;color:var(--muted);margin-top:0.3rem}
+.card-bars{display:flex;flex-direction:column;gap:0.7rem}
+.bar-row{display:flex;align-items:center;gap:0.9rem;font-size:0.78rem}
+.bar-label{width:70px;color:var(--muted);text-align:right}
+.bar-track{flex:1;height:6px;background:var(--teal-pale);border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--teal-light));border-radius:3px;transform-origin:right;animation:barGrow 1.2s 1s both}
+@keyframes barGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.floating-tag{position:absolute;background:var(--ink);color:#fff;padding:0.5rem 1rem;border-radius:11px;font-size:0.75rem;font-weight:600;display:flex;align-items:center;gap:0.4rem;box-shadow:0 8px 20px rgba(13,46,48,0.18)}
+.floating-tag.top{top:-1.1rem;left:2rem;animation:float 3s ease-in-out infinite}
+.floating-tag.bottom{bottom:-1.1rem;right:2rem;animation:float 3s 1.5s ease-in-out infinite}
+.floating-tag .dot{width:6px;height:6px;border-radius:50%;background:#4ade80}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.stats-bar{background:var(--ink);color:#fff;padding:2.2rem 5vw;display:flex;justify-content:center}
+.stat-item{text-align:center;padding:0 3.5vw;border-left:1px solid rgba(255,255,255,0.08);flex:1;max-width:200px}
+.stat-item:last-child{border-right:1px solid rgba(255,255,255,0.08)}
+.stat-num{font-size:2rem;font-weight:900;color:var(--teal-light);display:block}
+.stat-label{font-size:0.78rem;color:rgba(255,255,255,0.55);font-family:'Tajawal',sans-serif;margin-top:0.25rem}
+section{padding:5rem 5vw}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:0.7rem}
+.section-title{font-size:clamp(1.6rem,3vw,2.5rem);font-weight:900;line-height:1.2;margin-bottom:0.9rem}
+.section-sub{font-family:'Tajawal',sans-serif;color:var(--muted);font-size:0.97rem;line-height:1.8;max-width:530px}
+.services{background:var(--surface)}
+.services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.8rem;flex-wrap:wrap;gap:1.5rem}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.service-card{background:var(--cream);border-radius:18px;padding:1.7rem;border:1px solid transparent;transition:all 0.3s;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--teal),var(--gold));transform:scaleX(0);transform-origin:right;transition:transform 0.4s}
+.service-card:hover{border-color:var(--border);transform:translateY(-4px);box-shadow:0 12px 36px rgba(42,180,192,0.1)}
+.service-card:hover::before{transform:scaleX(1)}
+.svc-graphic{width:64px;height:64px;margin-bottom:1rem}
+.service-card h3{font-size:1rem;font-weight:700;margin-bottom:0.5rem;color:var(--teal-dark)}
+.service-card p{font-family:'Tajawal',sans-serif;font-size:0.85rem;color:var(--muted);line-height:1.7}
+.about{background:var(--cream)}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-img-box{background:linear-gradient(135deg,var(--teal-dark),var(--ink));border-radius:22px;height:380px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:2rem}
+.about-img-box::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 40%,rgba(201,168,76,0.18),transparent 60%)}
+.about-logo-big{width:85%;max-height:160px;object-fit:contain;position:relative;z-index:1;filter:brightness(0) invert(1);opacity:0.15}
+.about-badge-float{position:absolute;background:var(--gold);color:var(--ink);padding:0.85rem 1.3rem;border-radius:13px;font-weight:700;font-size:0.82rem;bottom:-1.3rem;left:-1.3rem;box-shadow:0 8px 20px rgba(201,168,76,0.32)}
+.about-badge-float span{display:block;font-size:1.25rem;font-weight:900}
+.about-content .section-sub{margin-bottom:1.7rem}
+.about-list{list-style:none;display:flex;flex-direction:column;gap:0.85rem}
+.about-list li{display:flex;gap:0.7rem;align-items:flex-start;font-family:'Tajawal',sans-serif;font-size:0.93rem;color:var(--muted)}
+.about-list li::before{content:'✦';color:var(--gold);font-size:0.66rem;margin-top:5px;flex-shrink:0}
+.info-strip{background:var(--teal);color:#fff;padding:3rem 5vw}
+.info-strip-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem}
+.info-item{display:flex;align-items:flex-start;gap:0.9rem}
+.info-icon{width:44px;height:44px;flex-shrink:0;background:rgba(255,255,255,0.15);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.25rem}
+.info-item h4{font-size:0.87rem;font-weight:700;margin-bottom:0.3rem}
+.info-item p{font-family:'Tajawal',sans-serif;font-size:0.82rem;opacity:0.85;line-height:1.7}
+.info-item a{color:#fff;text-decoration:none}.info-item a:hover{text-decoration:underline}
+.testimonials{background:var(--ink);color:#fff}
+.testimonials .section-title{color:#fff}.testimonials .section-sub{color:rgba(255,255,255,0.6)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.8rem}
+.t-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:1.7rem;transition:all 0.3s}
+.t-card:hover{background:rgba(255,255,255,0.09);transform:translateY(-3px)}
+.t-stars{color:var(--gold-light);letter-spacing:2px;font-size:0.82rem;margin-bottom:0.85rem}
+.t-text{font-family:'Tajawal',sans-serif;font-size:0.89rem;line-height:1.75;color:rgba(255,255,255,0.8);margin-bottom:1.3rem}
+.t-author{display:flex;align-items:center;gap:0.7rem}
+.t-avatar{width:37px;height:37px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-light));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.82rem;color:#fff}
+.t-name{font-weight:700;font-size:0.87rem}
+.t-role{font-size:0.72rem;color:rgba(255,255,255,0.4);font-family:'Tajawal',sans-serif}
+.cta-section{background:var(--cream);padding:5rem 5vw;text-align:center}
+.cta-box{max-width:660px;margin:0 auto;background:var(--ink);border-radius:26px;padding:3.2rem 2.3rem;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 50%,rgba(42,180,192,0.1),transparent 60%);pointer-events:none}
+.cta-box .section-title{color:#fff;margin-bottom:0.85rem}
+.cta-box p{font-family:'Tajawal',sans-serif;color:rgba(255,255,255,0.62);margin-bottom:1.7rem;font-size:0.96rem;line-height:1.7}
+.cta-btn{background:var(--teal);color:#fff;padding:0.9rem 2.2rem;border-radius:50px;text-decoration:none;font-weight:800;font-size:0.95rem;display:inline-block;transition:all 0.2s}
+.cta-btn:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(42,180,192,0.38)}
+.cta-contact{display:flex;justify-content:center;gap:1.6rem;flex-wrap:wrap;margin-top:1.6rem}
+.cta-contact-item{display:flex;align-items:center;gap:0.4rem;font-size:0.82rem;color:rgba(255,255,255,0.65);font-family:'Tajawal',sans-serif}
+.cta-contact-item a{color:var(--teal-light);text-decoration:none}.cta-contact-item a:hover{text-decoration:underline}
+footer{background:#061a1b;color:rgba(255,255,255,0.4);padding:1.7rem 5vw;display:flex;justify-content:space-between;align-items:center;font-size:0.79rem;font-family:'Tajawal',sans-serif;flex-wrap:wrap;gap:1rem}
+.footer-logo{height:36px;opacity:0.7}
+.footer-links{display:flex;gap:1.6rem}
+.footer-links a{color:rgba(255,255,255,0.4);text-decoration:none;cursor:pointer;transition:color 0.2s}.footer-links a:hover{color:var(--teal-light)}
+#library-page{display:none;min-height:100vh;padding-top:72px;background:var(--cream)}
+.lib-header{background:linear-gradient(135deg,var(--teal-dark),var(--ink));color:#fff;padding:2.5rem 5vw 2rem;text-align:center}
+.lib-header h2{font-size:1.85rem;font-weight:900;margin-bottom:0.4rem}
+.lib-header p{font-family:'Tajawal',sans-serif;opacity:0.72;font-size:0.92rem}
+.lib-search-bar{max-width:460px;margin:1.2rem auto 0;display:flex;background:#fff;border-radius:50px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,0.14)}
+.lib-search-bar input{flex:1;border:none;outline:none;padding:0.72rem 1.3rem;font-family:'Cairo',sans-serif;font-size:0.87rem}
+.lib-search-bar button{background:var(--teal);color:#fff;border:none;padding:0 1.2rem;cursor:pointer;font-size:1rem}
+.lib-body{max-width:1200px;margin:0 auto;padding:2.3rem 5vw}
+.lib-filters{display:flex;gap:0.65rem;flex-wrap:wrap;margin-bottom:1.7rem}
+.filter-btn{padding:0.4rem 0.95rem;border-radius:50px;border:1.5px solid var(--border);background:#fff;color:var(--muted);font-size:0.79rem;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'Cairo',sans-serif}
+.filter-btn.active,.filter-btn:hover{background:var(--teal);color:#fff;border-color:var(--teal)}
+.books-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1.2rem}
+.book-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,0.06);transition:all 0.2s;display:flex;flex-direction:column}
+.book-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(42,180,192,0.12)}
+.book-cover{height:175px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:#e0f7fa}
+.book-cover img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.book-cover-fallback{font-size:3rem;z-index:1}
+.book-info{padding:0.9rem;flex:1;display:flex;flex-direction:column}
+.book-title{font-size:0.87rem;font-weight:700;margin-bottom:0.22rem;color:var(--ink);line-height:1.3}
+.book-author{font-family:'Tajawal',sans-serif;font-size:0.75rem;color:var(--muted);margin-bottom:0.42rem}
+.book-cat-badge{display:inline-block;padding:0.16rem 0.62rem;border-radius:50px;background:var(--teal-pale);color:var(--teal-dark);font-size:0.69rem;font-weight:600;margin-bottom:0.65rem}
+.book-desc{font-family:'Tajawal',sans-serif;font-size:0.75rem;color:var(--muted);margin-bottom:0.5rem;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.book-status{font-size:0.72rem;font-family:'Tajawal',sans-serif;margin-bottom:0.65rem}
+.book-status.available{color:#16a34a}.book-status.borrowed{color:#dc2626}
+.request-btn{background:var(--teal);color:#fff;border:none;padding:0.56rem 1rem;border-radius:9px;font-family:'Cairo',sans-serif;font-weight:700;font-size:0.79rem;cursor:pointer;transition:all 0.2s;margin-top:auto}
+.request-btn:hover{background:var(--teal-dark)}
+.request-btn:disabled{background:#ccc;cursor:not-allowed}
+.empty-state{text-align:center;padding:4rem;color:var(--muted);grid-column:1/-1}
+.empty-icon{font-size:3.2rem;margin-bottom:0.85rem;opacity:0.35}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.48);z-index:500;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{display:flex}
+.modal{background:#fff;border-radius:22px;padding:2rem;width:100%;max-width:430px;position:relative;animation:slideUp 0.3s;max-height:90vh;overflow-y:auto}
+@keyframes slideUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.modal-close{position:absolute;top:1rem;left:1rem;background:none;border:none;font-size:1.25rem;cursor:pointer;color:var(--muted)}
+.modal h3{font-size:1.1rem;font-weight:900;margin-bottom:1.2rem;color:var(--teal-dark)}
+.modal-book-info{display:flex;gap:0.85rem;align-items:center;background:var(--teal-pale);padding:0.85rem;border-radius:11px;margin-bottom:1.2rem}
+.modal-book-img{width:52px;height:68px;border-radius:6px;object-fit:cover;flex-shrink:0}
+.modal-book-fallback{width:52px;height:68px;border-radius:6px;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0}
+.modal-book-title-text{font-weight:700;font-size:0.9rem}
+.modal-book-author-text{font-size:0.77rem;color:var(--muted);font-family:'Tajawal',sans-serif;margin-top:0.2rem}
+.form-group{margin-bottom:0.85rem}
+.form-group label{display:block;font-size:0.79rem;font-weight:700;margin-bottom:0.3rem;color:var(--ink)}
+.form-group input{width:100%;padding:0.62rem 0.95rem;border:1.5px solid var(--border);border-radius:9px;font-family:'Cairo',sans-serif;font-size:0.87rem;outline:none;transition:border-color 0.2s}
+.form-group input:focus{border-color:var(--teal)}
+.submit-btn{width:100%;background:var(--teal);color:#fff;border:none;padding:0.8rem;border-radius:11px;font-family:'Cairo',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;margin-top:0.4rem}
+.submit-btn:hover{background:var(--teal-dark)}
+.success-msg{text-align:center;padding:1.6rem 0;display:none}
+.success-msg .check{font-size:2.7rem;margin-bottom:0.85rem}
+.success-msg h4{font-size:1rem;font-weight:900;color:var(--teal-dark);margin-bottom:0.4rem}
+.success-msg p{font-family:'Tajawal',sans-serif;font-size:0.83rem;color:var(--muted)}
+#admin-page{display:none;min-height:100vh;padding-top:72px;background:#f0f4f4}
+.admin-header{background:linear-gradient(135deg,var(--ink),var(--teal-dark));color:#fff;padding:2rem 5vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.admin-header h2{font-size:1.45rem;font-weight:900}
+.admin-header p{font-family:'Tajawal',sans-serif;opacity:0.65;font-size:0.84rem;margin-top:0.15rem}
+.admin-stats{display:flex;gap:0.85rem;flex-wrap:wrap;align-items:center}
+.admin-stat{background:rgba(255,255,255,0.1);border-radius:10px;padding:0.65rem 1.1rem;text-align:center}
+.admin-stat-num{font-size:1.35rem;font-weight:900;color:var(--teal-light)}
+.admin-stat-label{font-size:0.66rem;opacity:0.65;font-family:'Tajawal',sans-serif}
+.admin-body{max-width:1200px;margin:0 auto;padding:1.7rem 5vw;display:grid;grid-template-columns:1fr 1.6fr;gap:1.7rem;align-items:start}
+.admin-panel{background:#fff;border-radius:16px;padding:1.6rem;box-shadow:0 4px 16px rgba(0,0,0,0.05)}
+.admin-panel h3{font-size:0.95rem;font-weight:900;margin-bottom:1.2rem;color:var(--teal-dark);padding-bottom:0.65rem;border-bottom:2px solid var(--teal-pale)}
+.admin-form .form-group{margin-bottom:0.85rem}
+.admin-form label{display:block;font-size:0.77rem;font-weight:700;margin-bottom:0.28rem;color:var(--ink)}
+.admin-form input,.admin-form select,.admin-form textarea{width:100%;padding:0.58rem 0.88rem;border:1.5px solid var(--border);border-radius:9px;font-family:'Cairo',sans-serif;font-size:0.85rem;outline:none;transition:border-color 0.2s;background:#fff}
+.admin-form textarea{resize:vertical;min-height:60px}
+.admin-form input:focus,.admin-form select:focus,.admin-form textarea:focus{border-color:var(--teal)}
+
+.add-btn{width:100%;background:var(--teal);color:#fff;border:none;padding:0.72rem;border-radius:11px;font-family:'Cairo',sans-serif;font-weight:700;font-size:0.88rem;cursor:pointer}
+.add-btn:hover{background:var(--teal-dark)}.add-btn:disabled{background:#aaa;cursor:not-allowed}
+.admin-books-list{display:flex;flex-direction:column;gap:0.65rem;max-height:540px;overflow-y:auto}
+.admin-books-list::-webkit-scrollbar{width:4px}.admin-books-list::-webkit-scrollbar-thumb{background:var(--teal-pale);border-radius:4px}
+.admin-book-row{display:flex;align-items:center;gap:0.85rem;background:var(--cream);border-radius:11px;padding:0.7rem 0.88rem;border:1px solid var(--border)}
+.admin-book-thumb{width:38px;height:50px;border-radius:5px;object-fit:cover;flex-shrink:0}
+.admin-book-thumb-fallback{width:38px;height:50px;border-radius:5px;background:var(--teal-pale);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.admin-book-details{flex:1;min-width:0}
+.admin-book-title-txt{font-size:0.84rem;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.admin-book-meta{font-size:0.72rem;color:var(--muted);font-family:'Tajawal',sans-serif}
+.admin-book-actions{display:flex;gap:0.42rem;flex-shrink:0}
+.toggle-btn{padding:0.26rem 0.7rem;border-radius:7px;border:none;font-size:0.71rem;font-weight:700;cursor:pointer;font-family:'Cairo',sans-serif}
+.toggle-btn.available{background:#dcfce7;color:#16a34a}.toggle-btn.borrowed{background:#fee2e2;color:#dc2626}
+.del-btn{padding:0.26rem 0.62rem;border-radius:7px;border:none;background:#fee2e2;color:#dc2626;cursor:pointer;font-size:0.8rem}
+.requests-list{display:flex;flex-direction:column;gap:0.65rem;margin-top:0.85rem}
+.req-card{background:#fff;border-radius:10px;padding:0.85rem;border-right:3px solid var(--teal);box-shadow:0 2px 7px rgba(0,0,0,0.04)}
+.req-card-title{font-size:0.84rem;font-weight:700;color:var(--ink)}
+.req-card-info{font-size:0.75rem;color:var(--muted);font-family:'Tajawal',sans-serif;margin-top:0.18rem}
+.req-badge{display:inline-block;padding:0.12rem 0.55rem;border-radius:50px;font-size:0.67rem;font-weight:700;margin-top:0.32rem;background:#dcfce7;color:#15803d}
+#admin-login-page{display:none}
+.admin-login{display:flex;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(135deg,var(--teal-pale),#fdf6e3);padding:2rem}
+.login-box{background:#fff;border-radius:22px;padding:2.6rem;width:100%;max-width:370px;text-align:center;box-shadow:0 20px 55px rgba(0,0,0,0.09)}
+.login-logo{height:64px;margin:0 auto 1.2rem}
+.login-box h2{font-size:1.2rem;font-weight:900;color:var(--teal-dark);margin-bottom:0.3rem}
+.login-box>p{font-family:'Tajawal',sans-serif;font-size:0.82rem;color:var(--muted);margin-bottom:1.7rem}
+.login-form .form-group{text-align:right;margin-bottom:0.85rem}
+.login-form label{display:block;font-size:0.77rem;font-weight:700;margin-bottom:0.28rem}
+.login-form input{width:100%;padding:0.62rem 0.9rem;border:1.5px solid var(--border);border-radius:9px;font-family:'Cairo',sans-serif;font-size:0.87rem;outline:none}
+.login-form input:focus{border-color:var(--teal)}
+.login-btn{width:100%;background:var(--teal);color:#fff;border:none;padding:0.8rem;border-radius:11px;font-family:'Cairo',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;margin-top:0.4rem}
+.login-btn:hover{background:var(--teal-dark)}
+.login-err{color:#dc2626;font-size:0.79rem;margin-top:0.42rem;display:none;font-family:'Tajawal',sans-serif}
+.notif{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:#fff;padding:0.72rem 1.7rem;border-radius:50px;font-size:0.84rem;font-weight:600;box-shadow:0 8px 22px rgba(0,0,0,0.18);transition:transform 0.4s;z-index:600;white-space:nowrap}
+.img-upload-area{border:2px dashed var(--border);border-radius:12px;padding:1.2rem;text-align:center;cursor:pointer;transition:all 0.2s;background:var(--cream);min-height:120px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.img-upload-area:hover{border-color:var(--teal);background:var(--teal-pale)}
+.img-upload-area.has-image{padding:0.5rem;border-style:solid;border-color:var(--teal)}
+.upload-placeholder{display:flex;flex-direction:column;align-items:center;gap:0.4rem;font-family:'Tajawal',sans-serif;font-size:0.82rem;color:var(--muted)}
+.img-preview{max-width:100%;max-height:180px;border-radius:8px;object-fit:contain}
+.img-remove-btn{position:absolute;top:0.4rem;left:0.4rem;background:rgba(220,38,38,0.9);color:#fff;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:0.8rem;display:flex;align-items:center;justify-content:center}
+.notif.show{transform:translateX(-50%) translateY(0)}
+.loading-overlay{position:fixed;inset:0;background:rgba(248,252,253,0.95);z-index:800;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem}
+.spinner{width:42px;height:42px;border:3px solid var(--teal-pale);border-top-color:var(--teal);border-radius:50%;animation:spin 0.8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{font-family:'Tajawal',sans-serif;color:var(--muted);font-size:0.9rem}
+.whatsapp-float{position:fixed;bottom:1.5rem;right:1.5rem;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,0.4);z-index:500;transition:transform 0.2s,box-shadow 0.2s;text-decoration:none}
+.whatsapp-float:hover{transform:scale(1.1);box-shadow:0 6px 24px rgba(37,211,102,0.5)}
+.whatsapp-float svg{width:30px;height:30px;fill:#fff}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity 0.7s,transform 0.7s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr}.hero-visual{display:none}
+  .services-grid{grid-template-columns:1fr 1fr}.about-inner{grid-template-columns:1fr}
+  .testimonials-grid{grid-template-columns:1fr}.nav-links{display:none}
+  .stats-bar{flex-wrap:wrap;padding:1.5rem 3vw}.stat-item{min-width:100px;padding:0.5rem 2vw}
+  .info-strip-inner{grid-template-columns:1fr}.admin-body{grid-template-columns:1fr}
+  .floating-tag{display:none}
+  .cta-contact{flex-direction:column;align-items:center;gap:0.8rem}
+  .about-badge-float{position:relative;bottom:auto;left:auto;margin-top:1rem;display:inline-block}
+  section{padding:3rem 4vw}
+  .hero{padding:5rem 4vw 3rem}
+  .hero h1{font-size:1.8rem}
+  .cta-box{padding:2rem 1.5rem}
+  .info-strip{padding:2rem 4vw}
+  .admin-header{padding:1.5rem 4vw}
+}
+@media(max-width:600px){
+  .services-grid{grid-template-columns:1fr}
+  .hero{padding-top:5rem}
+  .hero-actions{flex-direction:column;gap:0.7rem}
+  .btn-primary,.btn-secondary{width:100%;text-align:center;justify-content:center}
+  .stats-bar{gap:0.5rem}.stat-item{min-width:80px}
+  .stat-num{font-size:1.5rem}
+  .modal{padding:1.5rem;margin:0.5rem}
+}
+
+    /* MOBILE NAV */
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;z-index:300}
+    .hamburger span{display:block;width:24px;height:2.5px;background:var(--teal-dark);border-radius:2px;transition:all 0.3s}
+    .hamburger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+    .mobile-menu{
+      display:none;position:fixed;top:68px;right:0;left:0;
+      background:rgba(248,252,253,0.98);backdrop-filter:blur(18px);
+      border-bottom:1px solid var(--border);z-index:150;
+      padding:0.8rem 5vw 1.2rem;flex-direction:column;gap:0.2rem;
+      box-shadow:0 8px 24px rgba(42,180,192,0.1);
+    }
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{
+      display:block;padding:0.7rem 1rem;border-radius:10px;
+      font-size:1rem;font-weight:600;color:var(--muted);
+      text-decoration:none;cursor:pointer;transition:background 0.2s,color 0.2s;
+      font-family:'Cairo',sans-serif;border:none;background:none;text-align:right;width:100%;
+    }
+    .mobile-menu a:hover{background:var(--teal-pale);color:var(--teal-dark)}
+    .mobile-menu .mob-cta{background:var(--teal);color:#fff!important;border-radius:10px;margin-top:0.3rem}
+    @media(max-width:900px){
+      .hamburger{display:flex}
+      .nav-links{display:none!important}
+    }
+</style>
+</head>
+<body>
+<div class="loading-overlay" id="loading"><div class="spinner"></div><div class="loading-text">جاري التحميل...</div></div>
+<div class="notif" id="notif"></div>
+<nav id="navbar">
+  <img src="https://www.tamkeenqa.sa/_next/image?url=%2Ftamkeen-full-logo.png&w=640&q=75" class="logo-img" alt="جمعية تمكين الأسرة"/>
+  <ul class="nav-links">
+    <li><a href="index.html">الرئيسية</a></li>
+    <li><a href="about.html">من نحن</a></li>
+    <li><a href="services.html">الخدمات</a></li>
+    <li><a href="projects.html">المشاريع</a></li>
+    <li><a onclick="showPage('books')"><i class="fas fa-book-open"></i> الكتب</a></li>
+    <li><a href="contact.html" class="nav-cta">تواصل معنا</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html" onclick="closeMobileMenu()"><i class="fas fa-home"></i> الرئيسية</a>
+  <a href="about.html" onclick="closeMobileMenu()"><i class="fas fa-info-circle"></i> من نحن</a>
+  <a href="services.html" onclick="closeMobileMenu()"><i class="fas fa-cogs"></i> الخدمات</a>
+  <a href="projects.html" onclick="closeMobileMenu()"><i class="fas fa-project-diagram"></i> المشاريع</a>
+  <a onclick="closeMobileMenu();showPage('books')"><i class="fas fa-book-open"></i> الكتب المتاحة</a>
+  <a href="contact.html" onclick="closeMobileMenu()" class="mob-cta">تواصل معنا</a>
+  <a onclick="closeMobileMenu();showPage('admin-login')" style="font-size:0.85rem;color:var(--muted)"><i class="fas fa-tools"></i> لوحة التحكم</a>
+</div>
+
+<!-- MAIN -->
+<div id="main-page" style="display:none">
+<section class="hero"><div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge"><i class="fas fa-certificate"></i> جمعية تمكين الأسرة بالقصيم · مرخصة برقم ٢١٥٩</div>
+      <h1>بوابتك نحو <em>المعرفة</em><br/>وتمكين الأسرة</h1>
+      <p>مكتبة متخصصة تسعى لنشر ثقافة القراءة وتعزيز التنمية الأسرية — نحوّل أفراد الأسرة من مستهلكين إلى منتجين واعين.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="showPage('books')"><i class="fas fa-book-open"></i> تصفح الكتب المتاحة</button>
+        <button class="btn-secondary" onclick="goTo('services')">خدماتنا</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="floating-tag top"><span class="dot"></span> مفتوحة للجميع</div>
+      <div class="hero-card">
+        <div class="card-stat"><span class="card-stat-num">+٥<span> آلاف</span></span><span class="card-stat-label">كتاب ومرجع متاح</span></div>
+        <div class="card-bars">
+          <div class="bar-row"><span class="bar-label">الكتب</span><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div><span>٩٠٪</span></div>
+          <div class="bar-row"><span class="bar-label">الأطفال</span><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div><span>٨٠٪</span></div>
+          <div class="bar-row"><span class="bar-label">التنمية</span><div class="bar-track"><div class="bar-fill" style="width:95%"></div></div><span>٩٥٪</span></div>
+        </div>
+      </div>
+      <div class="floating-tag bottom"><i class="fas fa-hand-holding-heart"></i> إعارة مجانية للأعضاء</div>
+    </div>
+  </div>
+</section>
+<div class="stats-bar">
+  <div class="stat-item"><span class="stat-num">+٥٠٠٠</span><span class="stat-label">كتاب ومرجع</span></div>
+  <div class="stat-item"><span class="stat-num">+١٠٠٠</span><span class="stat-label">زائر سنوياً</span></div>
+  <div class="stat-item"><span class="stat-num">+٥٠</span><span class="stat-label">فعالية وورشة</span></div>
+  <div class="stat-item"><span class="stat-num">مجاناً</span><span class="stat-label">خدمة الإعارة</span></div>
+</div>
+<section class="services" id="services"><div class="section-inner">
+  <div class="services-header"><div>
+    <div class="section-tag reveal">— خدماتنا</div>
+    <h2 class="section-title reveal">ما الذي تقدمه المكتبة</h2>
+    <p class="section-sub reveal">نوفر بيئة معرفية ثقافية شاملة تخدم الفرد والأسرة في منطقة القصيم.</p>
+  </div></div>
+  <div class="services-grid">
+    <div class="service-card reveal"><svg class="svc-graphic" viewBox="0 0 64 64" fill="none"><rect width="64" height="64" rx="14" fill="#e0f7fa"/><rect x="14" y="14" width="25" height="33" rx="4" fill="#2ab4c0"/><rect x="18" y="20" width="16" height="2.5" rx="1.25" fill="white" opacity="0.7"/><rect x="18" y="25" width="12" height="2" rx="1" fill="white" opacity="0.5"/><rect x="18" y="29" width="14" height="2" rx="1" fill="white" opacity="0.5"/><path d="M34 42 L48 42 M41 35 L48 42 L41 49" stroke="#c9a84c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>الإعارة المنزلية</h3><p>استعر ما تشاء من الكتب والمراجع بكل سهولة وعُد بها إلى منزلك.</p></div>
+    <div class="service-card reveal"><svg class="svc-graphic" viewBox="0 0 64 64" fill="none"><rect width="64" height="64" rx="14" fill="#e0f7fa"/><circle cx="32" cy="20" r="8" fill="#2ab4c0"/><circle cx="32" cy="20" r="4" fill="white" opacity="0.35"/><rect x="20" y="32" width="24" height="15" rx="5" fill="#2ab4c0" opacity="0.7"/><rect x="25" y="37" width="14" height="2" rx="1" fill="white" opacity="0.8"/><circle cx="18" cy="28" r="4" fill="#c9a84c"/><circle cx="46" cy="28" r="4" fill="#c9a84c"/></svg><h3>مكتبة الأطفال</h3><p>قسم متكامل يحتوي على قصص وكتب تعليمية مناسبة لجميع الأعمار.</p></div>
+    <div class="service-card reveal"><svg class="svc-graphic" viewBox="0 0 64 64" fill="none"><rect width="64" height="64" rx="14" fill="#e0f7fa"/><rect x="10" y="18" width="44" height="26" rx="5" fill="#2ab4c0" opacity="0.15"/><rect x="10" y="18" width="44" height="4" rx="2" fill="#2ab4c0"/><rect x="16" y="28" width="9" height="9" rx="3" fill="#c9a84c" opacity="0.7"/><rect x="29" y="28" width="9" height="9" rx="3" fill="#2ab4c0" opacity="0.6"/><rect x="42" y="28" width="9" height="9" rx="3" fill="#c9a84c" opacity="0.7"/></svg><h3>ورش ثقافية وتوعوية</h3><p>ورش عمل وندوات منتظمة في التنمية الأسرية والقراءة والتطوير الذاتي.</p></div>
+    <div class="service-card reveal"><svg class="svc-graphic" viewBox="0 0 64 64" fill="none"><rect width="64" height="64" rx="14" fill="#e0f7fa"/><rect x="12" y="14" width="40" height="28" rx="5" fill="#2ab4c0"/><rect x="16" y="18" width="32" height="20" rx="3" fill="white" opacity="0.14"/><rect x="19" y="22" width="19" height="2" rx="1" fill="white" opacity="0.8"/><rect x="19" y="26" width="13" height="2" rx="1" fill="white" opacity="0.6"/><circle cx="40" cy="30" r="6" fill="#c9a84c"/><path d="M37.5 30 L39.5 32 L44 27.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>الفهرس الإلكتروني</h3><p>تصفح مقتنيات المكتبة والبحث عن الكتاب الذي تحتاجه.</p></div>
+    <div class="service-card reveal"><svg class="svc-graphic" viewBox="0 0 64 64" fill="none"><rect width="64" height="64" rx="14" fill="#e0f7fa"/><circle cx="22" cy="20" r="6.5" fill="#2ab4c0"/><circle cx="42" cy="20" r="6.5" fill="#c9a84c"/><circle cx="32" cy="24" r="5" fill="#2ab4c0" opacity="0.55"/><path d="M12 48 Q12 36 22 36 Q27 36 32 40 Q37 36 42 36 Q52 36 52 48" fill="#2ab4c0" opacity="0.4"/></svg><h3>برامج تمكين الأسرة</h3><p>برامج لدعم الأسرة القصيمية في التربية وتعزيز التواصل الأسري.</p></div>
+    <div class="service-card reveal"><svg class="svc-graphic" viewBox="0 0 64 64" fill="none"><rect width="64" height="64" rx="14" fill="#e0f7fa"/><circle cx="32" cy="32" r="17" fill="#2ab4c0" opacity="0.11"/><circle cx="32" cy="32" r="11" fill="#2ab4c0" opacity="0.2"/><path d="M25 32 Q32 22 39 32 Q32 42 25 32Z" fill="#2ab4c0"/><circle cx="32" cy="32" r="3.5" fill="white"/><circle cx="32" cy="32" r="1.8" fill="#c9a84c"/></svg><h3>نوادي القراءة</h3><p>انضم إلى نوادي القراءة وشارك في نقاشات ثرية مع محبي الكتاب.</p></div>
+  </div>
+</div></section>
+<section class="about" id="about"><div class="section-inner about-inner">
+  <div class="about-visual reveal">
+    <div class="about-img-box"><img src="https://www.tamkeenqa.sa/_next/image?url=%2Ftamkeen-full-logo.png&w=640&q=75" class="about-logo-big" alt="شعار"/></div>
+    <div class="about-badge-float"><span>٢١٥٩</span>رقم الترخيص</div>
+  </div>
+  <div class="about-content reveal">
+    <div class="section-tag">— عن المكتبة</div>
+    <h2 class="section-title">مكتبة تخدم الأسرة القصيمية</h2>
+    <p class="section-sub">مبادرة مجتمعية تهدف إلى نشر ثقافة القراءة وتعزيز الوعي الأسري — نحوّل أفراد الأسرة من مستهلكين إلى منتجين واعين.</p>
+    <ul class="about-list">
+      <li>مقتنيات متنوعة تشمل الكتب والدوريات والمراجع لجميع الأعمار</li>
+      <li>بيئة هادئة ومريحة تشجع على القراءة والمطالعة</li>
+      <li>برامج موجهة للمرأة والطفل والأسرة بشكل عام</li>
+      <li>فعاليات ثقافية وتوعوية منتظمة على مدار العام</li>
+      <li>خدمة الإعارة المنزلية المجانية لأعضاء الجمعية</li>
+    </ul>
+  </div>
+</div></section>
+<div class="info-strip"><div class="info-strip-inner">
+  <div class="info-item reveal"><div class="info-icon"><i class="fas fa-map-marker-alt"></i></div><div><h4>موقعنا</h4><p>بريدة — طريق الشهداء<br/>منطقة القصيم</p></div></div>
+  <div class="info-item reveal"><div class="info-icon"><i class="fas fa-phone-alt"></i></div><div><h4>تواصل معنا</h4><p><a href="tel:0163251413">0163251413</a><br/><a href="mailto:tamkeenqa@gmail.com">tamkeenqa@gmail.com</a></p></div></div>
+  <div class="info-item reveal"><div class="info-icon"><i class="fas fa-globe"></i></div><div><h4>الموقع الرسمي</h4><p><a href="https://www.tamkeenqa.sa" target="_blank">www.tamkeenqa.sa</a><br/><a href="https://twitter.com/tamkeenqa" target="_blank">@tamkeenqa</a></p></div></div>
+</div></div>
+<section class="testimonials"><div class="section-inner">
+  <div class="section-tag" style="color:var(--teal-light)">— آراء زوارنا</div>
+  <h2 class="section-title">ماذا يقول زوار المكتبة</h2>
+  <div class="testimonials-grid">
+    <div class="t-card reveal"><div class="t-stars">★★★★★</div><p class="t-text">"مكتبة رائعة وبيئة هادئة. استفدت كثيراً من مقتنياتهم المتنوعة."</p><div class="t-author"><div class="t-avatar">ن</div><div><div class="t-name">نورة العنزي</div><div class="t-role">معلمة، بريدة</div></div></div></div>
+    <div class="t-card reveal"><div class="t-stars">★★★★★</div><p class="t-text">"أحضر أطفالي بانتظام وهم يحبون قسم الأطفال كثيراً."</p><div class="t-author"><div class="t-avatar">م</div><div><div class="t-name">محمد الزهراني</div><div class="t-role">ولي أمر، عنيزة</div></div></div></div>
+    <div class="t-card reveal"><div class="t-stars">★★★★★</div><p class="t-text">"ورش العمل مفيدة جداً وتناولت موضوعات أسرية مهمة."</p><div class="t-author"><div class="t-avatar">ه</div><div><div class="t-name">هند الشمري</div><div class="t-role">ربة منزل، القصيم</div></div></div></div>
+  </div>
+</div></section>
+<div class="cta-section" id="contact"><div class="cta-box reveal">
+  <h2 class="section-title">زورونا اليوم ونحن بانتظاركم</h2>
+  <p>تواصل معنا لمعرفة أوقات الدوام أو للاستفسار عن خدمات الإعارة والبرامج الثقافية.</p>
+  <a href="mailto:tamkeenqa@gmail.com" class="cta-btn">راسلنا الآن ←</a>
+  <div class="cta-contact">
+    <div class="cta-contact-item"><i class="fas fa-phone-alt"></i> <a href="tel:0163251413">0163251413</a></div>
+    <div class="cta-contact-item"><i class="fas fa-envelope"></i> <a href="mailto:tamkeenqa@gmail.com">tamkeenqa@gmail.com</a></div>
+    <div class="cta-contact-item"><i class="fab fa-twitter"></i> <a href="https://twitter.com/tamkeenqa" target="_blank">@tamkeenqa</a></div>
+    <div class="cta-contact-item"><i class="fas fa-globe"></i> <a href="https://www.tamkeenqa.sa" target="_blank">tamkeenqa.sa</a></div>
+  </div>
+</div></div>
+<footer>
+  <img src="https://www.tamkeenqa.sa/_next/image?url=%2Ftamkeen-full-logo.png&w=640&q=75" class="footer-logo" alt="شعار"/>
+  <span>© ٢٠٢٥ جمعية تمكين الأسرة بالقصيم · رقم الترخيص ٢١٥٩</span>
+  <div class="footer-links">
+    <a href="https://www.tamkeenqa.sa" target="_blank">الموقع الرسمي</a>
+    <a href="https://www.tamkeenqa.sa/news" target="_blank">المركز الإعلامي</a>
+    <a onclick="showPage('admin-login')">لوحة التحكم</a>
+  </div>
+</footer>
+</div>
+
+
+<div id="books-page" style="display:none;min-height:100vh;padding-top:72px;background:var(--cream)">
+  <div style="background:linear-gradient(135deg,var(--teal-dark),var(--ink));color:#fff;padding:2.5rem 5vw 2rem;text-align:center">
+    <h2 style="font-size:1.85rem;font-weight:900;margin-bottom:0.4rem"><i class="fas fa-book-open"></i> الكتب المتاحة للإعارة</h2>
+    <p style="font-family:Tajawal,sans-serif;opacity:0.75;font-size:0.93rem">جميع الكتب المتاحة حالياً للاستعارة</p>
+    <div style="max-width:460px;margin:1.2rem auto 0;display:flex;background:#fff;border-radius:50px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,0.14)">
+      <input type="text" id="books-search" placeholder="ابحث عن كتاب أو مؤلف..." oninput="renderBooksPage()"
+        style="flex:1;border:none;outline:none;padding:0.72rem 1.3rem;font-family:Cairo,sans-serif;font-size:0.87rem"/>
+      <button style="background:var(--teal);color:#fff;border:none;padding:0 1.2rem;cursor:pointer;font-size:1rem">🔍</button>
+    </div>
+  </div>
+  <div style="max-width:1200px;margin:0 auto;padding:2rem 5vw">
+    <div id="books-filters" style="display:flex;gap:0.65rem;flex-wrap:wrap;margin-bottom:1.7rem"></div>
+    <div id="books-page-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1.2rem">
+      <div style="text-align:center;padding:4rem;color:var(--muted);grid-column:1/-1">
+        <div style="font-size:3rem;margin-bottom:0.85rem;opacity:0.35">📚</div>
+        <p>جاري تحميل الكتب...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LIBRARY -->
+<div id="library-page" style="display:none">
+  <div class="lib-header">
+    <h2>كتالوج الكتب</h2>
+    <p>تصفح جميع الكتب المتاحة وقدّم طلب إعارة مباشرةً</p>
+    <div class="lib-search-bar">
+      <input type="text" id="search-input" placeholder="ابحث عن كتاب أو مؤلف..." oninput="renderBooks()"/>
+      <button>🔍</button>
+    </div>
+  </div>
+  <div class="lib-body">
+    <div class="lib-filters" id="filter-bar"></div>
+    <div class="books-grid" id="books-grid"><div class="empty-state"><div class="empty-icon">📚</div><p>جاري تحميل الكتب...</p></div></div>
+  </div>
+</div>
+
+<!-- ADMIN LOGIN -->
+<div id="admin-login-page" style="display:none">
+  <div class="admin-login"><div class="login-box">
+    <img src="https://www.tamkeenqa.sa/_next/image?url=%2Ftamkeen-full-logo.png&w=640&q=75" class="login-logo" alt="شعار"/>
+    <h2>لوحة تحكم المكتبة</h2>
+    <p>أدخل بيانات المدير للدخول</p>
+    <div class="login-form">
+      <div class="form-group"><label>اسم المستخدم</label><input type="text" id="login-user" placeholder="admin"/></div>
+      <div class="form-group"><label>كلمة المرور</label><input type="password" id="login-pass" placeholder="••••••"/></div>
+      <div class="login-err" id="login-err">اسم المستخدم أو كلمة المرور غير صحيحة</div>
+      <button class="login-btn" onclick="doLogin()">دخول</button>
+    </div>
+  </div></div>
+</div>
+
+<!-- ADMIN -->
+<div id="admin-page" style="display:none">
+  <div class="admin-header">
+    <div><h2><i class="fas fa-tools"></i> لوحة تحكم المكتبة</h2><p>إدارة الكتب وطلبات الإعارة</p></div>
+    <div class="admin-stats">
+      <div class="admin-stat"><div class="admin-stat-num" id="stat-total">-</div><div class="admin-stat-label">إجمالي</div></div>
+      <div class="admin-stat"><div class="admin-stat-num" id="stat-available">-</div><div class="admin-stat-label">متاح</div></div>
+      <div class="admin-stat"><div class="admin-stat-num" id="stat-requests">-</div><div class="admin-stat-label">طلب</div></div>
+      <button class="btn-secondary" style="border-color:rgba(255,255,255,0.3);color:#fff" onclick="doLogout()">خروج</button>
+    </div>
+  </div>
+  <div class="admin-body">
+    <div>
+      <div class="admin-panel">
+        <h3><i class="fas fa-plus-circle"></i> إضافة كتاب جديد</h3>
+        <div class="admin-form">
+          <div class="form-group"><label>عنوان الكتاب *</label><input type="text" id="f-title" placeholder="عنوان الكتاب"/></div>
+          <div class="form-group"><label>المؤلف *</label><input type="text" id="f-author" placeholder="اسم المؤلف"/></div>
+          <div class="form-group"><label>التصنيف</label>
+            <select id="f-cat"><option>تنمية أسرية</option><option>أطفال</option><option>دين وتربية</option><option>تطوير ذاتي</option><option>ثقافة عامة</option><option>علوم وتقنية</option><option>أدب وشعر</option></select>
+          </div>
+          <div class="form-group"><label>وصف مختصر</label><textarea id="f-desc" placeholder="وصف مختصر..."></textarea></div>
+          <div class="form-group">
+            <label>صورة غلاف الكتاب</label>
+            <div class="img-upload-area" id="img-upload-area" onclick="document.getElementById('f-img-file').click()">
+              <div id="img-preview-wrap">
+                <div class="upload-placeholder"><span style="font-size:2rem">📷</span><span>اضغط لاختيار صورة</span><span style="font-size:0.72rem;color:#999">PNG, JPG — حد أقصى 5MB</span></div>
+              </div>
+            </div>
+            <input type="file" id="f-img-file" accept="image/*" style="display:none" onchange="previewImage(this)"/>
+            <div style="display:flex;align-items:center;gap:0.5rem;margin-top:0.5rem">
+              <span style="font-size:0.75rem;color:var(--muted)">أو أدخل رابط:</span>
+              <input type="url" id="f-img" placeholder="https://..." style="flex:1;padding:0.4rem 0.7rem;font-size:0.8rem"/>
+            </div>
+          </div>
+          <button class="add-btn" id="add-btn" onclick="addBook()">إضافة الكتاب</button>
+        </div>
+      </div>
+      <div class="admin-panel" style="margin-top:1.3rem">
+        <h3><i class="fas fa-clipboard-list"></i> طلبات الإعارة</h3>
+        <div class="requests-list" id="requests-list"><p style="font-family:Tajawal,sans-serif;font-size:0.82rem;color:var(--muted);text-align:center;padding:1rem">لا توجد طلبات</p></div>
+      </div>
+    </div>
+    <div class="admin-panel">
+      <h3><i class="fas fa-books"></i> قائمة الكتب (<span id="books-count">0</span>)</h3>
+      <div class="admin-books-list" id="admin-books-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="req-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>طلب إعارة كتاب</h3>
+    <div class="modal-book-info">
+      <div id="modal-img-wrap"></div>
+      <div><div class="modal-book-title-text" id="modal-title"></div><div class="modal-book-author-text" id="modal-author"></div></div>
+    </div>
+    <div id="modal-form">
+      <div class="form-group"><label>الاسم الكامل *</label><input type="text" id="req-name" placeholder="اسمك الكريم"/></div>
+      <div class="form-group"><label>رقم الجوال *</label><input type="tel" id="req-phone" placeholder="05xxxxxxxx"/></div>
+      <div class="form-group"><label>رقم العضوية (اختياري)</label><input type="text" id="req-member" placeholder="رقم عضويتك"/></div>
+      <button class="submit-btn" onclick="submitRequest()">تأكيد الطلب</button>
+    </div>
+    <div class="success-msg" id="modal-success">
+      <div class="check">✅</div>
+      <h4>تم إرسال طلبك بنجاح!</h4>
+      <p>سيتواصل معك فريق المكتبة قريباً على رقم جوالك.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+
+function toggleMenu(){
+  const m=document.getElementById('mobile-menu');
+  const h=document.getElementById('hamburger');
+  m.classList.toggle('open');
+  h.classList.toggle('open');
+}
+function closeMobileMenu(){
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+// Close menu on scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+});
+
+let books=[], requests=[], currentBookId=null;
+const ADMIN_USER='admin', ADMIN_PASS='tamkeen2025';
+const ICONS={'تنمية أسرية':'👨‍👩‍👧','أطفال':'🧒','دين وتربية':'📿','تطوير ذاتي':'🌱','ثقافة عامة':'🌍','علوم وتقنية':'🔬','أدب وشعر':'✍️'};
+const COLORS={'تنمية أسرية':'#e0f7fa','أطفال':'#fff9e6','دين وتربية':'#f0fdf4','تطوير ذاتي':'#fdf4ff','ثقافة عامة':'#fff7ed','علوم وتقنية':'#eff6ff','أدب وشعر':'#fdf2f8'};
+
+// Firebase helpers
+const FB = () => window._firebase;
+const db = () => window._db;
+
+async function fbBooks() {
+  try {
+    const s = await FB().getDocs(FB().query(FB().collection(db(),'books'),FB().orderBy('createdAt','desc')));
+    return s.docs.map(d=>({id:d.id,...d.data()}));
+  } catch(e) {
+    const s = await FB().getDocs(FB().collection(db(),'books'));
+    return s.docs.map(d=>({id:d.id,...d.data()}));
+  }
+}
+async function fbRequests() {
+  try {
+    const s = await FB().getDocs(FB().query(FB().collection(db(),'requests'),FB().orderBy('createdAt','desc')));
+    return s.docs.map(d=>({id:d.id,...d.data()}));
+  } catch(e) {
+    const s = await FB().getDocs(FB().collection(db(),'requests'));
+    return s.docs.map(d=>({id:d.id,...d.data()}));
+  }
+}
+async function fbAdd(col,data){ return FB().addDoc(FB().collection(db(),col),{...data,createdAt:Date.now()}); }
+async function fbUpdate(col,id,data){ return FB().updateDoc(FB().doc(db(),col,id),data); }
+async function fbDelete(col,id){ return FB().deleteDoc(FB().doc(db(),col,id)); }
+
+
+// Pages
+function showPage(name){
+  ['main-page','library-page','books-page','admin-login-page','admin-page'].forEach(id=>{
+    const el=document.getElementById(id);if(el)el.style.display='none';
+  });
+  const t=document.getElementById(name+'-page');if(t)t.style.display='block';
+  if(name==='library')renderBooks();
+  if(name==='books'){loadBooksPage();}
+  if(name==='admin')loadAdmin();
+  window.scrollTo(0,0);
+}
+async function loadBooksPage(){
+  if(!books.length){try{books=await fbBooks();}catch(e){books=[];}}
+  renderBooksPage();
+}
+function renderBooksPage(){
+  const q=(document.getElementById('books-search')?.value||'').trim().toLowerCase();
+  const active=document.querySelector('#books-filters .filter-btn.active')?.dataset.cat||'الكل';
+  const grid=document.getElementById('books-page-grid');
+  const cats=['الكل',...new Set(books.map(b=>b.category))];
+  document.getElementById('books-filters').innerHTML=cats.map(c=>
+    `<button class="filter-btn ${active===c?'active':''}" data-cat="${c}"
+      onclick="document.querySelectorAll('#books-filters .filter-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active');renderBooksPage()">${c}</button>`
+  ).join('');
+  let f=books.filter(b=>b.available);
+  if(active!=='الكل')f=f.filter(b=>b.category===active);
+  if(q)f=f.filter(b=>b.title.toLowerCase().includes(q)||b.author.toLowerCase().includes(q));
+  if(!f.length){grid.innerHTML=`<div style="text-align:center;padding:4rem;color:var(--muted);grid-column:1/-1"><div style="font-size:3rem;opacity:0.35;margin-bottom:0.85rem">📭</div><p>${books.length?'لا توجد كتب متاحة':'لم تُضف كتب بعد'}</p></div>`;return;}
+  grid.innerHTML=f.map(b=>`
+    <div class="book-card">
+      <div class="book-cover" style="background:${COLORS[b.category]||'#e0f7fa'}">
+        ${b.imageUrl?`<img src="${b.imageUrl}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0" onerror="this.style.display='none'" alt=""/>` :''}
+        <div class="book-cover-fallback" style="${b.imageUrl?'opacity:0.15':''}">${ICONS[b.category]||'📖'}</div>
+      </div>
+      <div class="book-info">
+        <div class="book-title">${b.title}</div>
+        <div class="book-author">${b.author}</div>
+        <div class="book-cat-badge">${b.category}</div>
+        ${b.desc?`<div class="book-desc">${b.desc}</div>`:''}
+        <div class="book-status available">● متاح للإعارة</div>
+        <button class="request-btn" onclick="openModal('${b.id}')">طلب إعارة ←</button>
+      </div>
+    </div>`).join('');
+}
+function goTo(id){
+  showPage('main');
+  setTimeout(()=>{const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},60);
+}
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>30));
+document.querySelectorAll('.reveal').forEach((el,i)=>{
+  new IntersectionObserver(([e])=>{if(e.isIntersecting){setTimeout(()=>el.classList.add('visible'),i%5*80);}},{threshold:0.1}).observe(el);
+});
+function notify(msg){const n=document.getElementById('notif');n.textContent=msg;n.classList.add('show');setTimeout(()=>n.classList.remove('show'),3200);}
+
+// Auth
+function doLogin(){
+  const u=document.getElementById('login-user').value.trim(), p=document.getElementById('login-pass').value;
+  if(u===ADMIN_USER&&p===ADMIN_PASS){document.getElementById('login-err').style.display='none';showPage('admin');}
+  else document.getElementById('login-err').style.display='block';
+}
+function doLogout(){showPage('main');}
+document.getElementById('login-pass').addEventListener('keyup',e=>{if(e.key==='Enter')doLogin();});
+
+
+
+// Library
+function renderBooks(){
+  const q=(document.getElementById('search-input')?.value||'').trim().toLowerCase();
+  const active=document.querySelector('.filter-btn.active')?.dataset.cat||'الكل';
+  const grid=document.getElementById('books-grid');
+  const cats=['الكل',...new Set(books.map(b=>b.category))];
+  document.getElementById('filter-bar').innerHTML=cats.map(c=>`<button class="filter-btn ${active===c?'active':''}" data-cat="${c}" onclick="setFilter('${c}')">${c}</button>`).join('');
+  let f=books;
+  if(active!=='الكل') f=f.filter(b=>b.category===active);
+  if(q) f=f.filter(b=>b.title.toLowerCase().includes(q)||b.author.toLowerCase().includes(q));
+  if(!f.length){grid.innerHTML=`<div class="empty-state"><div class="empty-icon">📭</div><p>${books.length?'لا توجد نتائج':'لم تُضف كتب بعد'}</p></div>`;return;}
+  grid.innerHTML=f.map(b=>`
+    <div class="book-card">
+      <div class="book-cover" style="background:${COLORS[b.category]||'#e0f7fa'}">
+        ${b.imageUrl?`<img src="${b.imageUrl}" onerror="this.style.display='none'" alt="${b.title}"/>`:''}
+        <div class="book-cover-fallback" style="${b.imageUrl?'opacity:0.15':''}"> ${ICONS[b.category]||'📖'}</div>
+      </div>
+      <div class="book-info">
+        <div class="book-title">${b.title}</div>
+        <div class="book-author">${b.author}</div>
+        <div class="book-cat-badge">${b.category}</div>
+        ${b.desc?`<div class="book-desc">${b.desc}</div>`:''}
+        <div class="book-status ${b.available?'available':'borrowed'}">${b.available?'● متاح للإعارة':'● معار حالياً'}</div>
+        <button class="request-btn" ${b.available?'':'disabled'} onclick="openModal('${b.id}')">${b.available?'طلب إعارة ←':'غير متاح'}</button>
+      </div>
+    </div>`).join('');
+}
+function setFilter(cat){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.toggle('active',b.dataset.cat===cat));renderBooks();}
+
+// Modal
+function openModal(id){
+  currentBookId=id; const b=books.find(x=>x.id===id); if(!b) return;
+  document.getElementById('modal-title').textContent=b.title;
+  document.getElementById('modal-author').textContent=b.author;
+  const w=document.getElementById('modal-img-wrap');
+  w.innerHTML=b.imageUrl?`<img src="${b.imageUrl}" class="modal-book-img" alt="${b.title}"/>`:`<div class="modal-book-fallback">${ICONS[b.category]||'📖'}</div>`;
+  document.getElementById('modal-form').style.display='block';
+  document.getElementById('modal-success').style.display='none';
+  ['req-name','req-phone','req-member'].forEach(i=>document.getElementById(i).value='');
+  document.getElementById('req-modal').classList.add('open');
+}
+function closeModal(){document.getElementById('req-modal').classList.remove('open');currentBookId=null;}
+document.getElementById('req-modal').addEventListener('click',e=>{if(e.target===document.getElementById('req-modal'))closeModal();});
+async function submitRequest(){
+  const name=document.getElementById('req-name').value.trim(), phone=document.getElementById('req-phone').value.trim();
+  if(!name||!phone){notify('⚠️ يرجى ملء الاسم ورقم الجوال');return;}
+  const b=books.find(x=>x.id===currentBookId); if(!b||!b.available) return;
+  try{
+    await fbAdd('requests',{bookId:b.id,bookTitle:b.title,name,phone,member:document.getElementById('req-member').value.trim(),date:new Date().toLocaleDateString('ar-SA')});
+    await fbUpdate('books',b.id,{available:false}); b.available=false;
+    document.getElementById('modal-form').style.display='none';
+    document.getElementById('modal-success').style.display='block';
+    renderBooks(); notify('✅ تم إرسال طلبك بنجاح!');
+  }catch(e){notify('❌ حدث خطأ، حاول مجدداً');}
+}
+
+// Admin
+async function loadAdmin(){
+  try{[books,requests]=await Promise.all([fbBooks(),fbRequests()]);renderAdmin();}
+  catch(e){notify('❌ خطأ في تحميل البيانات');}
+}
+function renderAdmin(){
+  document.getElementById('stat-total').textContent=books.length;
+  document.getElementById('stat-available').textContent=books.filter(b=>b.available).length;
+  document.getElementById('stat-requests').textContent=requests.length;
+  document.getElementById('books-count').textContent=books.length;
+  const list=document.getElementById('admin-books-list');
+  list.innerHTML=!books.length?'<p style="font-family:Tajawal,sans-serif;font-size:0.82rem;color:var(--muted);text-align:center;padding:2rem">أضف أول كتاب!</p>':
+    books.map(b=>`<div class="admin-book-row">
+      ${b.imageUrl?`<img src="${b.imageUrl}" class="admin-book-thumb" alt=""/>`:`<div class="admin-book-thumb-fallback">${ICONS[b.category]||'📖'}</div>`}
+      <div class="admin-book-details"><div class="admin-book-title-txt">${b.title}</div><div class="admin-book-meta">${b.author} · ${b.category}</div></div>
+      <div class="admin-book-actions">
+        <button class="toggle-btn ${b.available?'available':'borrowed'}" onclick="toggleAvail('${b.id}',${b.available})">${b.available?'متاح':'معار'}</button>
+        <button class="del-btn" onclick="delBook('${b.id}')">🗑</button>
+      </div>
+    </div>`).join('');
+  const rlist=document.getElementById('requests-list');
+  rlist.innerHTML=!requests.length?'<p style="font-family:Tajawal,sans-serif;font-size:0.82rem;color:var(--muted);text-align:center;padding:1rem">لا توجد طلبات</p>':
+    requests.map(r=>`<div class="req-card"><div class="req-card-title">📖 ${r.bookTitle}</div><div class="req-card-info">👤 ${r.name} · 📞 ${r.phone}${r.member?' · عضوية: '+r.member:''} · 📅 ${r.date}</div><span class="req-badge">جديد</span></div>`).join('');
+}
+// Image handling
+let selectedImageFile = null;
+let compressedBase64 = null;
+
+function previewImage(input){
+  const file = input.files[0];
+  if(!file) return;
+  if(file.size > 5*1024*1024){notify('⚠️ حجم الصورة أكبر من 5MB');input.value='';return;}
+  selectedImageFile = file;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      let w=img.width, h=img.height;
+      if(w>400){h=h*(400/w);w=400;}
+      if(h>560){w=w*(560/h);h=560;}
+      canvas.width=w;canvas.height=h;
+      canvas.getContext('2d').drawImage(img,0,0,w,h);
+      compressedBase64 = canvas.toDataURL('image/jpeg',0.7);
+      document.getElementById('img-preview-wrap').innerHTML=`<img src="${compressedBase64}" class="img-preview" alt="معاينة"/><button class="img-remove-btn" onclick="event.stopPropagation();removeImage()">✕</button>`;
+      document.getElementById('img-upload-area').classList.add('has-image');
+      document.getElementById('f-img').value='';
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+function removeImage(){
+  selectedImageFile=null;compressedBase64=null;
+  document.getElementById('f-img-file').value='';
+  document.getElementById('img-preview-wrap').innerHTML=`<div class="upload-placeholder"><span style="font-size:2rem">📷</span><span>اضغط لاختيار صورة</span><span style="font-size:0.72rem;color:#999">PNG, JPG — حد أقصى 5MB</span></div>`;
+  document.getElementById('img-upload-area').classList.remove('has-image');
+}
+
+async function addBook(){
+  const title=document.getElementById('f-title').value.trim(), author=document.getElementById('f-author').value.trim();
+  if(!title||!author){notify('⚠️ العنوان والمؤلف مطلوبان');return;}
+  const btn=document.getElementById('add-btn'); btn.disabled=true; btn.textContent='جاري الإضافة...';
+  try{
+    let imageUrl = document.getElementById('f-img').value.trim();
+    if(compressedBase64) imageUrl = compressedBase64;
+    const data={title,author,category:document.getElementById('f-cat').value,desc:document.getElementById('f-desc').value.trim(),available:true,imageUrl:imageUrl||''};
+    const docRef=await fbAdd('books',data);
+    data.id=docRef.id; books.unshift(data);
+    ['f-title','f-author','f-desc','f-img'].forEach(i=>document.getElementById(i).value='');
+    removeImage();
+    renderAdmin(); notify('✅ تمت إضافة الكتاب بنجاح');
+  }catch(e){notify('❌ فشلت الإضافة: '+e.message);}
+  btn.disabled=false; btn.textContent='إضافة الكتاب';
+}
+async function delBook(id){
+  if(!confirm('هل أنت متأكد؟')) return;
+  try{await fbDelete('books',id);books=books.filter(b=>b.id!==id);renderAdmin();notify('🗑 تم الحذف');}
+  catch(e){notify('❌ فشل الحذف');}
+}
+async function toggleAvail(id,cur){
+  try{await fbUpdate('books',id,{available:!cur});const b=books.find(x=>x.id===id);if(b)b.available=!cur;renderAdmin();notify('✅ تم التحديث');}
+  catch(e){notify('❌ فشل التحديث');}
+}
+
+// Init
+async function init(){
+  document.addEventListener('firebaseReady',async()=>{
+    try{
+      books = await fbBooks();
+      requests = await fbRequests();
+    }catch(e){
+      console.error('Firebase load error:', e);
+    }
+    renderBooks();
+    showPage('main');
+    document.getElementById('loading').style.display='none';
+  });
+  setTimeout(()=>{
+    const loader = document.getElementById('loading');
+    if(loader && loader.style.display !== 'none'){
+      loader.style.display='none';
+      showPage('main');
+    }
+  }, 3000);
+}
+init();
+</script>
+<a href="https://wa.me/966557837554" target="_blank" class="whatsapp-float" aria-label="تواصل واتساب">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+</body>
+</html>
