@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>تواصل معنا — جمعية تمكين الأسرة بالقصيم</title>
+<meta name="description" content="تواصل مع جمعية تمكين الأسرة بالقصيم — بريدة، طريق الشهداء. هاتف: 0163251413"/>
+<meta property="og:title" content="تواصل معنا — جمعية تمكين الأسرة بالقصيم"/>
+<meta property="og:image" content="https://i.ibb.co/354bxcQT/Screenshot.png"/>
+<meta name="theme-color" content="#2ab4c0"/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--teal:#2ab4c0;--teal-dark:#1a8a94;--teal-light:#5ecdd6;--teal-pale:#e0f7fa;--gold:#c9a84c;--gold-light:#e8c97a;--ink:#0d2e30;--cream:#f8fcfd;--surface:#fff;--muted:#5a8a8e;--border:rgba(42,180,192,0.15)}
+html{scroll-behavior:smooth;overflow-x:hidden;width:100%}
+body{font-family:'Cairo',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;width:100%;max-width:100vw}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0.6rem 5vw;background:rgba(248,252,253,0.96);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);transition:box-shadow 0.3s}
+nav.scrolled{box-shadow:0 4px 24px rgba(42,180,192,0.12)}
+.logo-img{height:50px;width:auto}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:0.88rem;font-weight:600;transition:color 0.2s;cursor:pointer;font-family:'Cairo',sans-serif;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;right:0;width:0;height:2px;background:var(--teal);transition:width 0.3s;border-radius:2px}
+.nav-links a:hover{color:var(--ink)}.nav-links a:hover::after{width:100%}
+.nav-links a.active{color:var(--teal-dark)}.nav-links a.active::after{width:100%}
+.nav-cta{background:var(--teal)!important;color:#fff!important;padding:0.46rem 1.3rem;border-radius:50px}
+.nav-cta::after{display:none!important}.nav-cta:hover{background:var(--teal-dark)!important}
+.nav-cta.active{background:var(--teal-dark)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;z-index:300}
+.hamburger span{display:block;width:24px;height:2.5px;background:var(--teal-dark);border-radius:2px;transition:all 0.3s}
+.hamburger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:68px;right:0;left:0;background:rgba(248,252,253,0.98);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);z-index:150;padding:0.8rem 5vw 1.2rem;flex-direction:column;gap:0.2rem;box-shadow:0 8px 24px rgba(42,180,192,0.1)}
+.mobile-menu.open{display:flex}
+.mobile-menu a{display:block;padding:0.7rem 1rem;border-radius:10px;font-size:1rem;font-weight:600;color:var(--muted);text-decoration:none;cursor:pointer;font-family:'Cairo',sans-serif}
+.mobile-menu a:hover{background:var(--teal-pale);color:var(--teal-dark)}
+.mobile-menu .mob-cta{background:var(--teal);color:#fff!important;border-radius:10px;margin-top:0.3rem}
+.page-hero{background:linear-gradient(135deg,var(--teal-dark),var(--ink));color:#fff;padding:8rem 5vw 4rem;text-align:center;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 30% 70%,rgba(42,180,192,0.12),transparent 60%)}
+.page-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:0.6rem;position:relative}
+.page-hero p{font-family:'Tajawal',sans-serif;opacity:0.75;font-size:0.95rem;max-width:500px;margin:0 auto;position:relative}
+.content-section{max-width:1000px;margin:0 auto;padding:3.5rem 5vw}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.contact-form-card{background:var(--surface);border-radius:18px;padding:2rem;box-shadow:0 4px 16px rgba(0,0,0,0.05);border:1px solid var(--border)}
+.contact-form-card h2{font-size:1.15rem;font-weight:900;color:var(--teal-dark);margin-bottom:1.2rem}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;font-size:0.82rem;font-weight:700;margin-bottom:0.35rem;color:var(--ink)}
+.form-group input,.form-group textarea{width:100%;padding:0.7rem 1rem;border:1.5px solid var(--border);border-radius:10px;font-family:'Cairo',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s;background:#fff}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--teal)}
+.form-group textarea{resize:vertical;min-height:120px}
+.submit-btn{width:100%;background:var(--teal);color:#fff;border:none;padding:0.85rem;border-radius:12px;font-family:'Cairo',sans-serif;font-weight:700;font-size:0.92rem;cursor:pointer;transition:background 0.2s;margin-top:0.3rem}
+.submit-btn:hover{background:var(--teal-dark)}
+.contact-info{display:flex;flex-direction:column;gap:1.2rem}
+.info-card{background:var(--surface);border-radius:14px;padding:1.4rem;box-shadow:0 4px 12px rgba(0,0,0,0.04);border:1px solid var(--border);display:flex;align-items:flex-start;gap:1rem;transition:transform 0.2s}
+.info-card:hover{transform:translateX(-4px)}
+.info-icon{width:48px;height:48px;background:var(--teal-pale);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.info-card h4{font-size:0.9rem;font-weight:800;color:var(--ink);margin-bottom:0.3rem}
+.info-card p{font-family:'Tajawal',sans-serif;font-size:0.85rem;color:var(--muted);line-height:1.7}
+.info-card a{color:var(--teal-dark);text-decoration:none}
+.info-card a:hover{text-decoration:underline}
+.wa-card{background:linear-gradient(135deg,#25D366,#128C7E);border:none}
+.wa-card .info-icon{background:rgba(255,255,255,0.2)}
+.wa-card h4,.wa-card p,.wa-card a{color:#fff}
+.success-toast{display:none;background:#16a34a;color:#fff;padding:1rem 1.5rem;border-radius:12px;text-align:center;font-weight:700;margin-top:1rem}
+footer{background:#061a1b;color:rgba(255,255,255,0.4);padding:1.7rem 5vw;display:flex;justify-content:space-between;align-items:center;font-size:0.79rem;font-family:'Tajawal',sans-serif;flex-wrap:wrap;gap:1rem}
+.footer-logo{height:36px;opacity:0.7}
+.footer-links{display:flex;gap:1.6rem}
+.footer-links a{color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s}.footer-links a:hover{color:var(--teal-light)}
+.whatsapp-float{position:fixed;bottom:1.5rem;right:1.5rem;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,0.4);z-index:500;transition:transform 0.2s;text-decoration:none}
+.whatsapp-float:hover{transform:scale(1.1)}
+.whatsapp-float svg{width:30px;height:30px;fill:#fff}
+@media(max-width:900px){.nav-links{display:none!important}.hamburger{display:flex}.contact-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav id="navbar">
+  <img src="https://www.tamkeenqa.sa/_next/image?url=%2Ftamkeen-full-logo.png&w=640&q=75" class="logo-img" alt="جمعية تمكين الأسرة"/>
+  <ul class="nav-links">
+    <li><a href="index.html">الرئيسية</a></li>
+    <li><a href="about.html">من نحن</a></li>
+    <li><a href="services.html">الخدمات</a></li>
+    <li><a href="projects.html">المشاريع</a></li>
+    <li><a href="contact.html" class="nav-cta active">تواصل معنا</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="document.getElementById('mobile-menu').classList.toggle('open');this.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">🏠 الرئيسية</a>
+  <a href="about.html">📋 من نحن</a>
+  <a href="services.html">⚙️ الخدمات</a>
+  <a href="projects.html">📁 المشاريع</a>
+  <a href="contact.html" class="mob-cta">تواصل معنا</a>
+</div>
+
+<div class="page-hero">
+  <h1>تواصل معنا</h1>
+  <p>نسعد بتواصلكم واستفساراتكم — فريقنا جاهز لخدمتكم</p>
+</div>
+
+<div class="content-section">
+  <div class="contact-grid">
+    <div class="contact-form-card">
+      <h2>📩 أرسل رسالتك</h2>
+      <div class="form-group">
+        <label>الاسم الكامل *</label>
+        <input type="text" id="c-name" placeholder="اسمك الكريم"/>
+      </div>
+      <div class="form-group">
+        <label>البريد الإلكتروني *</label>
+        <input type="email" id="c-email" placeholder="example@email.com"/>
+      </div>
+      <div class="form-group">
+        <label>رقم الجوال</label>
+        <input type="tel" id="c-phone" placeholder="05xxxxxxxx"/>
+      </div>
+      <div class="form-group">
+        <label>الرسالة *</label>
+        <textarea id="c-msg" placeholder="اكتب رسالتك هنا..."></textarea>
+      </div>
+      <button class="submit-btn" onclick="sendMsg()">إرسال الرسالة ←</button>
+      <div class="success-toast" id="success-toast">✅ تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.</div>
+    </div>
+
+    <div class="contact-info">
+      <div class="info-card">
+        <div class="info-icon">📍</div>
+        <div>
+          <h4>موقعنا</h4>
+          <p>بريدة — طريق الشهداء<br/>منطقة القصيم، المملكة العربية السعودية</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">📞</div>
+        <div>
+          <h4>الهاتف</h4>
+          <p><a href="tel:0163251413">0163251413</a></p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">📧</div>
+        <div>
+          <h4>البريد الإلكتروني</h4>
+          <p><a href="mailto:tamkeenqa@gmail.com">tamkeenqa@gmail.com</a></p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">🌐</div>
+        <div>
+          <h4>الموقع الرسمي</h4>
+          <p><a href="https://www.tamkeenqa.sa" target="_blank">www.tamkeenqa.sa</a></p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">🐦</div>
+        <div>
+          <h4>تويتر</h4>
+          <p><a href="https://twitter.com/tamkeenqa" target="_blank">@tamkeenqa</a></p>
+        </div>
+      </div>
+
+      <div class="info-card wa-card">
+        <div class="info-icon">💬</div>
+        <div>
+          <h4>واتساب</h4>
+          <p><a href="https://wa.me/966557837554" target="_blank">+966557837554</a><br/>تواصل مباشر عبر واتساب</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <img src="https://www.tamkeenqa.sa/_next/image?url=%2Ftamkeen-full-logo.png&w=640&q=75" class="footer-logo" alt="شعار"/>
+  <span>© ٢٠٢٥ جمعية تمكين الأسرة بالقصيم · رقم الترخيص ٢١٥٩</span>
+  <div class="footer-links">
+    <a href="index.html">الرئيسية</a>
+    <a href="https://www.tamkeenqa.sa" target="_blank">الموقع الرسمي</a>
+  </div>
+</footer>
+
+<a href="https://wa.me/966557837554" target="_blank" class="whatsapp-float" aria-label="تواصل واتساب">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>30));
+function sendMsg(){
+  const name=document.getElementById('c-name').value.trim();
+  const email=document.getElementById('c-email').value.trim();
+  const msg=document.getElementById('c-msg').value.trim();
+  if(!name||!email||!msg){alert('يرجى ملء الحقول المطلوبة');return;}
+  // Send via WhatsApp as fallback
+  const text=`📩 رسالة جديدة من موقع المكتبة\n\n👤 الاسم: ${name}\n📧 البريد: ${email}\n📞 الجوال: ${document.getElementById('c-phone').value.trim()}\n\n💬 الرسالة:\n${msg}`;
+  window.open('https://wa.me/966557837554?text='+encodeURIComponent(text),'_blank');
+  document.getElementById('success-toast').style.display='block';
+  ['c-name','c-email','c-phone','c-msg'].forEach(i=>document.getElementById(i).value='');
+}
+</script>
+</body>
+</html>
